@@ -1,0 +1,8 @@
+# write a yaml configuration file
+results_to_summarise:
+  - table_name: TABLE5
+    column_name: VAR4
+    row_number: VARB
+  - table_name: TABLE5
+    column_name: VAR9
+    row_number: VARC
