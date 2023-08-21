@@ -1,4 +1,4 @@
-# write a yaml configuration file
+# yaml configuration file for specific results
 results_to_summarise:
   - table_name: TABLE5
     column_name: VAR4
