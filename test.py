@@ -61,7 +61,7 @@ def find_xlsx_files(directory):
   return xlsx_files
 
 def subset_on_project(list, subproject):
-  """Subsets a list to return only those strings that contain the string "CPET".
+  """Subsets a list to return only those strings that contain the string "subproject".
 
   Args:
     list: The list to subset.
@@ -110,7 +110,6 @@ def find_rows_with_strings_at_location_0(dataframe):
     row = dataframe.iloc[i]
     if isinstance(row[0], str) and all(pd.isnull(value) for value in row[1:]):
       rows.append(i)
-
   return rows
 
 
@@ -128,7 +127,6 @@ def split_dataframe_by_rows(dataframe, rows):
   split_dataframes = []
   current_dataframe = pd.DataFrame()
   for i in range(len(rows)-1):
-    #print("The row number is", i)
     if i == 0:
       current_dataframe = dataframe.iloc[rows[i]:(rows[i + 1]-1)]
     else:
@@ -239,7 +237,3 @@ def main():
 
 if __name__ == "__main__":
   main()
-
-
- 
- 
