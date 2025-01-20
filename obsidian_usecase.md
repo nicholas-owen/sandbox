@@ -194,7 +194,7 @@ WHERE author = "Edgar Allan Poe"
 ````
 
 
-#### Examples of My Usage:
+### Examples of My Usage:
 
 Calendar entries: in `/general/calendar`
 ````
@@ -227,4 +227,102 @@ not done
 ```
 ````
 
+Tag Summary:<br>
+
+````
+```dataview
+TABLE
+		length(rows.file.name) as entries
+	, join(rows.file.link, ", ") as files
+FROM
+		#ion or #meeting 
+flatten
+		file.tags as tag
+group by
+		tag
+		
+SORT entries DESC
+```
+````
+
+#### Useful Plugins
+##### Admonitions
+https://plugins.javalent.com/admonitions/beginner/types
+examples
+````
+```ad-note
+title: Nested Admonitions
+collapse: open
+
+Hello!
+```
+````
+
+````
+```ad-danger
+Warning this wont work
+```
+````
+
+````
+```ad-info
+Hello this is a useful bit of informatrion. 
+```
+````
+
+##### Obsidian Calendar
+https://github.com/liamcain/obsidian-calendar-plugin
+
+##### Homepage
+https://github.com/mirnovov/obsidian-homepage
+Sets a default page on start
+
+##### Mindmap
+https://github.com/lynchjames/obsidian-mind-map
+Create the markmaps and various mindmap styles
+
+##### DataView
+https://github.com/blacksmithgu/obsidian-dataview
+
+##### File Tree Alternative
+https://github.com/ozntel/file-tree-alternative
+
+##### Table of Contents
+https://github.com/hipstersmoothie/obsidian-plugin-toc
+
+##### Tasks
+https://github.com/obsidian-tasks-group/obsidian-tasks
+examples:
+````
+- [ ] Something non-important, with no date
+- [ ] Remember to do that important thing - with a due date 📅 2022-12-17
+- [ ] Send Kate a birthday card - with a scheduled date 🔁 every January on the 4th ⏳ 2023-01-04
+````
+
+````
+```tasks
+# Only tasks that are not done, that is, which begin like this (but without the quotes):
+#   '- [ ] ' or
+#   '* [ ] ' or
+#   '1. [ ] '
+# Indented tasks are supported, but only single-line tasks.
+not done
+
+# Tasks due today or earlier:
+due before tomorrow
+
+# Restrict to at most 100 tasks.
+# If you ask Tasks to display many hundreds or thousands of tasks,
+# Obsidian's editing performance really slows down.
+limit 100
+
+# Group and sort the output:
+group by filename
+sort by due reverse
+sort by description
+
+# Optionally, ask Tasks to explain how it interpreted this query:
+explain
+```
+````
 
