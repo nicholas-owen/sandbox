@@ -157,3 +157,74 @@ markmap:
 
 
 ```
+
+### Data View
+info: https://blacksmithgu.github.io/obsidian-dataview/
+
+Data Indexing example note:
+```
+---
+author: "Edgar Allan Poe"
+published: 1845
+tags: poems
+---
+
+# The Raven
+
+Once upon a midnight dreary, while I pondered, weak and weary,
+Over many a quaint and curious volume of forgotten lore—
+```
+
+Data Querying example
+
+````
+```dataview
+LIST
+```
+````
+
+a more restricted Query:
+
+````
+```dataview
+LIST
+FROM #poems
+WHERE author = "Edgar Allan Poe"
+```
+````
+
+
+#### Examples of My Usage:
+
+Calendar entries: in `/general/calendar`
+````
+```dataview
+table without ID
+	link(file.link, title) as "Event", 
+	date as "Date", 
+	URL as "Link" ,
+	formatType as "Format"
+from "General/calendar" 
+FLATTEN dateformat(date(this.file.day), "EEE") AS wDay 
+FLATTEN ((x) => { Mon: "M", Tue: "T", Wed: "W", Thu: "R", Fri: "F", Sat: "S" , Sun: "U" }[x])(wDay) AS sDay 
+where 
+	contains(daysOfWeek, sDay) 
+	or 
+	file.day = this.file.day 
+	and
+	file.name !="_Index_of_calendar"
+sort startTime ASC
+```
+````
+
+
+Outstanding tasks:<br>
+A task starts with `- [ ] ` check box entry to make simply either done with `x` or not done ` `
+````
+```tasks 
+starts on or after 2024-01-01
+not done 
+```
+````
+
+
